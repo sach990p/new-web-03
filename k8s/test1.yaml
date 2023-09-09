@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: website-cloth
+  namespace: default
+  labels:
+    app: website-cloth
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: website-cloth
+  template:
+    metadata:
+      labels:
+        app: website-cloth
+    spec:
+      containers:
+      - name: website-cloth
+        image: shyamacr.azurecr.io/website-cloth:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
